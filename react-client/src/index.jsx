@@ -59,7 +59,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    this.getTreeData();
+    // this.getTreeData();
   }
 
   findNearby() {
@@ -75,7 +75,7 @@ class App extends React.Component {
       nearbyItems: result
     })
     console.log('Your coordinates: ' + lat + ' ' + lon);
-    console.log('Found trees: ', this.state.nearbyItems);
+    console.log('Located the following trees: ', this.state.items); // temporarily using data from this.state
   }
 
   requestSaveAllData() {
