@@ -88,23 +88,24 @@ class App extends React.Component {
     })
   }
 
-  getTreeData() {
-    console.log('Locating trees');
-    https.get('/items', (response) => {
-      var data = '';
-      response.on('data', (chunk) => {
-        data += chunk;
-      })
-      response.on('end', () => {
-        this.setState({
-          items: JSON.parse(data)
-        })
-        this.findNearby();
-      })
-    }).on('error', (err) => {
-      console.error('Error: ' + err.message);
-    })
-  }
+  // Commented out for demo
+  // getTreeData() {
+  //   console.log('Locating trees');
+  //   https.get('/items', (response) => {
+  //     var data = '';
+  //     response.on('data', (chunk) => {
+  //       data += chunk;
+  //     })
+  //     response.on('end', () => {
+  //       this.setState({
+  //         items: JSON.parse(data)
+  //       })
+  //       this.findNearby();
+  //     })
+  //   }).on('error', (err) => {
+  //     console.error('Error: ' + err.message);
+  //   })
+  // }
 
   onChangeLatitude(e) {
     this.setState({
@@ -126,7 +127,7 @@ class App extends React.Component {
         longitudeY={this.state.longitude}
         onChangeLat={this.onChangeLatitude.bind(this)}
         onChangeLon={this.onChangeLongitude.bind(this)}
-        onLocationSubmit={this.getTreeData.bind(this)}
+        onLocationSubmit={this.findNearby.bind(this)}
       />
     </div>)
   }
