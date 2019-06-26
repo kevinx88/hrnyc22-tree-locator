@@ -46,12 +46,13 @@ class Location extends React.Component {
     this.props.onLocationSubmit();
   }
 
-  // Create form use submitted coordinates
+  // Fix form use submitted coordinates
   // Use current location find nearest trees
   // Generate a map
 
   render() {
     return (<div>
+      <h4>Nearest Tree Finder</h4>
       <p>Type in your x-y coordinates <input type='text' value={this.props.latitudeX} onChange={this.props.onChangeLat} ></input>
         <input type='text' value={this.props.longitudeY} onChange={this.props.onChangeLon} ></input>
         <button onClick={this.submitLocation.bind(this)}>Submit</button>

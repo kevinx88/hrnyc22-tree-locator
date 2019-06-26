@@ -9,7 +9,6 @@ var getTreeData = function(callback) {
     })
   
     response.on('end', () => {
-      // console.log(JSON.parse(data)[0]);
       callback(null, JSON.parse(data));
     })
   

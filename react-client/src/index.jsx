@@ -14,16 +14,15 @@ class App extends React.Component {
       latitude: 40.7263504,
       longitude: -74.0075765
     }
-    this.findNearby.bind(this);
   }
 
-  // componentWillMount() {
-  //   this.requestSaveAllData();
-  // }
+  componentWillMount() {
+    this.requestSaveAllData();
+  }
   
-  // componentDidMount() {
-  //   this.getTreeData();
-  // }
+  componentDidMount() {
+    this.getTreeData();
+  }
 
   findNearby() {
     var lat = this.state.latitude;
@@ -37,11 +36,14 @@ class App extends React.Component {
     this.setState({
       nearbyItems: result
     })
-    console.log(this.state.nearbyItems);
+    console.log('Your coordinates: ' + lat + ' ' + lon);
+    console.log('Found trees: ', this.state.nearbyItems);
   }
 
+  findNearbyBound = this.findNearby.bind(this);
+
   getTreeData() {
-    console.log('function called');
+    console.log('Locating trees');
     https.get('/items', (response) => {
       var data = '';
       response.on('data', (chunk) => {
@@ -51,8 +53,7 @@ class App extends React.Component {
         this.setState({
           items: JSON.parse(data)
         })
-        // console.log(this.state.items[0]);
-        this.findNearby();
+        findNearbyBound();
       })
     }).on('error', (err) => {
       console.error('Error: ' + err.message);
